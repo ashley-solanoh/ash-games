@@ -8,6 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Enemy extends Enemies
 {
+    private int health;
+    private int speed;
+    
+    public Enemy (){
+      health = 2;
+      speed = 7;
+    }
+    
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -16,16 +24,23 @@ public class Enemy extends Enemies
     {
        move();
     }    
+    
     private void move()
     {
-        move(-10);
+        move(-speed);
         exitWorld();
     }
+    
     private void exitWorld()
     {
-        if (getX()<=1)
-        {
+        Actor bullet;
+        bullet = getOneObjectAtOffset(0,0, bullet.class);
+       if (getX()<=1) {
             getWorld().removeObject(this);
         }   
+       if (bullet != null)
+        {
+            health = health -   1;    
+        }
     }
 }
