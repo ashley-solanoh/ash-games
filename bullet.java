@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version (a version number or a date)
  */
 public class bullet extends Actor
+
 {
     /**
      * Act - do whatever the bullet wants to do. This method is called whenever
@@ -14,10 +15,11 @@ public class bullet extends Actor
      */
     public void act() 
     {
-       move(10);
-       boom();
-    }    
-    public void boom()
+       move();
+       destroy();
+    }  
+    
+    private void destroy()
     {
         Actor Enemy;
         Enemy = getOneObjectAtOffset(0,0, Enemy.class);
@@ -29,4 +31,17 @@ public class bullet extends Actor
 
         }
     }
+    
+    private void move()
+    {
+        move(10);
+        exitWorld();
+    }    
+    private void exitWorld()
+    {
+        if (getX() >= getWorld().getWorldEdge()){
+            getWorld().removeObject(this);
+        }   
+    }
+   
 }

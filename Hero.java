@@ -8,19 +8,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Hero extends Actor
 {
+    public int health = 10;
     
     /**
      * Act - do whatever the Nana wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private double timer=0.25;
+    private double lastShotTime = System.currentTimeMillis();
+    private double firingRate = 250;//in milliseconds
+	
     public void act() 
     {
-       movement();
+       move();
        shoot();
     }    
     
-    public void movement()
+    private void move()
     {
       if(Greenfoot.isKeyDown("up"))
       {
@@ -40,17 +43,22 @@ public class Hero extends Actor
       }
     }   
     
-     public void shoot()
-   
+     private void shoot()
     {
 
-          {if(Greenfoot.isKeyDown("space"))
-           {
+          if(Greenfoot.isKeyDown("space"))
+          {
+              double currentShotTime = System.currentTimeMillis();
+              double timeElapsed = currentShotTime - this.lastShotTime;
+              
+            if (timeElapsed >= firingRate)
+            {
               getWorld().addObject(new bullet(), getX(), getY());
-              timer=0.25;
+              this.lastShotTime = System.currentTimeMillis();
             }
           }
-        }
-
     }
+}
+
+    
 

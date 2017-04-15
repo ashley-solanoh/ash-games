@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Beachworld extends World
 {
+    private int worldEdge = 595;
+  
     /**
      * Constructor for objects of class Beachworld.
      * 
@@ -17,9 +19,13 @@ public class Beachworld extends World
         super(600,600,1); 
         start();
     }
-    public void start()
+    private void start()
     {
       addObject(new Game(), 100, 250);
     }
-
-}
+    
+    public int getWorldEdge()
+    {
+        return this.worldEdge;
+    }    
+ }

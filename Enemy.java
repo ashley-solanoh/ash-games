@@ -14,10 +14,18 @@ public class Enemy extends Enemies
      */
     public void act() 
     {
-       movement();
+       move();
     }    
-    public void movement()
+    private void move()
     {
         move(-10);
+        exitWorld();
+    }
+    private void exitWorld()
+    {
+        if (getX()<=1)
+        {
+            getWorld().removeObject(this);
+        }   
     }
 }
