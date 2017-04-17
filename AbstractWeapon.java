@@ -16,9 +16,9 @@ public abstract class AbstractWeapon extends Actor implements Weapon
     private int ammoSpeed;
     
     public AbstractWeapon(double pFiringRate, Ammo pAmmo, int pSpeed) {
+        this.firingRate = pFiringRate;
         this.ammo = pAmmo;
         this.ammoSpeed = pSpeed;
-        this.firingRate = pFiringRate;
     }
     
     public void shoot(int pX, int pY) {
@@ -26,11 +26,19 @@ public abstract class AbstractWeapon extends Actor implements Weapon
         double currentShotTime = System.currentTimeMillis();
         double timeElapsed = currentShotTime - this.lastShotTime;
           
-        if (timeElapsed >= firingRate) {
-            Actor ammoActor = (Actor) ammo;
+        if (timeElapsed >= this.firingRate) {
+            try {
+            String className = ammo.getClass().getSimpleName();
+            Actor ammoActor = (Actor) Class.forName(className).getConstructors()[0].newInstance();;
+            
             getWorld().addObject(ammoActor, pX, pY);
             this.lastShotTime = System.currentTimeMillis();
+            Greenfoot.playSound("next-level.wav");
+            } catch (Exception e) {
+            }
+            
         }
+        getImage().setTransparency(0);
     }
     
 }

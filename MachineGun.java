@@ -19,7 +19,7 @@ public class MachineGun extends AbstractWeapon
     } 
     //AbstractWeapon(double pFiringRate, Ammo pAmmo, int pSpeed) {
     public MachineGun() {
-      super (40, new MagicBullet(), 10);
+      super (500, new MagicBullet(), 10);
     }
     
 }

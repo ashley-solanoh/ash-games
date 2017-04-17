@@ -1,31 +1,28 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Nana here.
+ * Write a description of class AbstractHero here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Hero extends Actor
+public abstract class AbstractHero extends Actor
 {
     protected int health;
     protected int speed;
-    protected AbstractWeapon currentWeapon;
-  
-    /**
-     * Act - do whatever the Nana wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    protected Weapon currentWeapon;
 
+    public void act() {
+        move();
+        shoot();
+        collide();
+    }
     
-     public void act() 
-    {
-       move();
-       shoot();
-      
-    }    
+        public int getHealth() {
+        return this.health;
+    }
     
-     public void move()
+    public void move()
     {
        if(Greenfoot.isKeyDown("up"))
        {
@@ -57,11 +54,15 @@ public class Hero extends Actor
     
      public void collide()
     {
-        Actor enemy;
-        enemy = getOneObjectAtOffset(0,0, Enemy.class);
-        if (enemy != null)
+        Actor actor;
+        actor = getOneObjectAtOffset(0,0, AbstractEnemies.class);
+        if (actor != null)
         {
-            health = health -   2;    
+            AbstractEnemies enemy = (AbstractEnemies) actor; 
+            this.health = this.health -   enemy.getDamage();    
+            //getWorld().getObject((Actor));
+            getWorld().removeObject(enemy);
+            die();
         }
     }
     
@@ -74,6 +75,3 @@ public class Hero extends Actor
         
     }
 }
-
-    
-

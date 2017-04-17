@@ -11,6 +11,7 @@ public class GuidedMissile extends AbstractBullets
      
     public void act()  {
       move();
+      exitWorld();
     }
     
     public GuidedMissile() {

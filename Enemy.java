@@ -6,41 +6,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends Enemies
+public class Enemy extends AbstractEnemies
 {
-    private int health;
-    private int speed;
-    
-    public Enemy (){
+      public Enemy (){
       health = 2;
-      speed = 7;
-    }
-    
-    /**
-     * Act - do whatever the Enemy wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-       move();
-    }    
-    
-    private void move()
-    {
-        move(-speed);
-        exitWorld();
-    }
-    
-    private void exitWorld()
-    {
-        Actor xx;
-        xx = getOneObjectAtOffset(0,0, MagicBullet.class);
-       if (getX()<=1) {
-            getWorld().removeObject(this);
-        }   
-       if (xx != null)
-        {
-            health = health -   1;    
-        }
+      speed = 4;
+      damage = 2;
     }
 }

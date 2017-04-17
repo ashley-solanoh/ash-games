@@ -11,6 +11,7 @@ public class FireBall extends AbstractBullets
      
     public void act()  {
       move();
+      exitWorld();
     }
     
     public FireBall() {

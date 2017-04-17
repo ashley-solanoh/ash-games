@@ -11,6 +11,7 @@ public class PiercingBullet extends AbstractBullets
      
     public void act()  {
       move();
+      exitWorld();
     }
     
     public PiercingBullet() {

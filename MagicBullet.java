@@ -11,6 +11,7 @@ public class MagicBullet extends AbstractBullets
      
     public void act()  {
       move();
+      exitWorld();
     }
     
     public MagicBullet() {

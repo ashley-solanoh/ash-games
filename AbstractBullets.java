@@ -12,6 +12,7 @@ public class AbstractBullets extends Actor implements Ammo
      
     public void act()  {
       move();
+      exitWorld();
     }
     
     public AbstractBullets(int pSpeed) {
@@ -19,6 +20,12 @@ public class AbstractBullets extends Actor implements Ammo
     }
     
     public void move() {
-        move(-speed);
+        move(speed);
+    }
+    
+    public void exitWorld()  {
+       if (getX() >= 995) {
+            getWorld().removeObject(this);
+        }
     }
 }
