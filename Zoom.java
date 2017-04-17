@@ -11,7 +11,7 @@ public class Zoom extends Hero
     public Zoom (){
       health = 15;
       speed = 20;
-      bulletType = ZoomPistol;
+      bulletType = "ZoomPistol";
       firingRate = 50;
     }
     

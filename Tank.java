@@ -11,7 +11,7 @@ public class Tank extends Hero
     public Tank (){
       health = 100;
       speed = 3;
-      bulletType = TankGun;
+      bulletType = "TankGun";
       firingRate = 250;
     }
     

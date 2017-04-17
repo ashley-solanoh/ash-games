@@ -10,7 +10,7 @@ public class Hero extends Actor
 {
     public int health;
     public int speed;
-    public String bulletType;
+    public Weapon currentWeapon;
   
     
 
@@ -18,8 +18,7 @@ public class Hero extends Actor
      * Act - do whatever the Nana wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public double lastShotTime = System.currentTimeMillis();
-    public double firingRate;//in milliseconds
+
     
      public void act() 
     {
@@ -52,18 +51,12 @@ public class Hero extends Actor
 
         if(Greenfoot.isKeyDown("space"))
           {
-              double currentShotTime = System.currentTimeMillis();
-              double timeElapsed = currentShotTime - this.lastShotTime;
-              
-            if (timeElapsed >= firingRate)
-            {
-              getWorld().addObject(Zoompistol(), getX(), getY());
-              this.lastShotTime = System.currentTimeMillis();
-            }
+              this.currentWeapon.shoot();
+
           }
     }
     
-    public void collision()
+     public void collide()
     {
         Actor enemy;
         enemy = getOneObjectAtOffset(0,0, Enemy.class);
@@ -73,7 +66,7 @@ public class Hero extends Actor
         }
     }
     
-    public void die() {
+     public void die() {
         if (health < 0) {
            World world;
            world = getWorld();
