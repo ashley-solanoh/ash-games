@@ -7,9 +7,7 @@
 public interface Weapon  
 {
 
-   public void shoot();
-   
-   public void firing();
+   public void shoot(int pX, int pY) ;
    
 }
 

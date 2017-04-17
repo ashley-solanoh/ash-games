@@ -13,7 +13,7 @@ public class FireBall extends AbstractBullets
       move();
     }
     
-    public MagicBullet() {
-      Super (20);
+    public FireBall() {
+      super (20);
     }
 }

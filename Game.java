@@ -16,14 +16,13 @@ public class Game extends Actor
     public void act() 
     {
         start();
-        spawnHero();
     }  
     
     private void start() {
  
         if("s".equals(Greenfoot.getKey())) 
         {
-          getWorld().addObject(new Tank(), 100, 250);
+          spawnHero();
           getWorld().addObject(new Enemy(), 600, 200);
         }
     }
@@ -35,11 +34,8 @@ public class Game extends Actor
     
     private void spawnHero()
     {
-        if("a".equals(Greenfoot.getKey()))
-        {
-            getWorld().addObject(new Zoom(),100,250);
-        }
-    }
+        getWorld().addObject(new Zoom(), 100, 250);
+     }
     
     
 }

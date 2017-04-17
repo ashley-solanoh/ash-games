@@ -13,7 +13,7 @@ public class PiercingBullet extends AbstractBullets
       move();
     }
     
-    public MagicBullet() {
-      Super (15);
+    public PiercingBullet() {
+      super (15);
     }
 }

@@ -16,4 +16,8 @@ public class Shotgun extends AbstractWeapon
     {
         // Add your action code here.
     }    
+    
+    public Shotgun()  {
+        super (1250, new PiercingBullet(), 15);
+    }
 }

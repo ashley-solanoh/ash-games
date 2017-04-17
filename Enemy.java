@@ -33,12 +33,12 @@ public class Enemy extends Enemies
     
     private void exitWorld()
     {
-        Actor bullet;
-        bullet = getOneObjectAtOffset(0,0, bullet.class);
+        Actor xx;
+        xx = getOneObjectAtOffset(0,0, MagicBullet.class);
        if (getX()<=1) {
             getWorld().removeObject(this);
         }   
-       if (bullet != null)
+       if (xx != null)
         {
             health = health -   1;    
         }

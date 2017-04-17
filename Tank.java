@@ -9,20 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Tank extends Hero
 {
     public Tank (){
-      health = 100;
-      speed = 3;
-      bulletType = "TankGun";
-      firingRate = 250;
-    }
-    
-    /**
-     * Act - do whatever the Tank wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-       move();
-       shoot();
+      this.health = 100;
+      this.speed = 3;
+      this.currentWeapon = new Shotgun();
     }    
 
 }

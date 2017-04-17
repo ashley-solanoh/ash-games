@@ -6,9 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class AbstractBullets extends Actor
+public class AbstractBullets extends Actor implements Ammo
 {
-    private speed;
+    private int speed;
      
     public void act()  {
       move();

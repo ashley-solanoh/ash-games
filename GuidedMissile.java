@@ -13,7 +13,7 @@ public class GuidedMissile extends AbstractBullets
       move();
     }
     
-    public MagicBullet() {
-      Super (25);
+    public GuidedMissile() {
+      super (25);
     }
 }

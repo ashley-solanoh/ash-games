@@ -16,4 +16,7 @@ public class RocketLauncher extends AbstractWeapon
     {
         // Add your action code here.
     }    
+    public RocketLauncher()  {
+        super (1250, new GuidedMissile(), 15);
+    }
 }

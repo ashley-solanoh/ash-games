@@ -7,7 +7,7 @@
 public interface Ammo  
 {
     
-  public void destroy();
+  //public void destroy();
   
   public void move();
   

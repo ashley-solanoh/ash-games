@@ -9,19 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Zoom extends Hero
 {
     public Zoom (){
-      health = 15;
-      speed = 20;
-      bulletType = "ZoomPistol";
-      firingRate = 50;
+      this.health = 15;
+      this.speed = 20;
+      this.currentWeapon = new MachineGun();
     }
-    
-    /**
-     * Act - do whatever the Zoom wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-       move();
-       shoot();
-    }    
+      
 }

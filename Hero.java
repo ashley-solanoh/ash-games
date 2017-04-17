@@ -8,12 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Hero extends Actor
 {
-    public int health;
-    public int speed;
-    public Weapon currentWeapon;
+    protected int health;
+    protected int speed;
+    protected AbstractWeapon currentWeapon;
   
-    
-
     /**
      * Act - do whatever the Nana wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -24,6 +22,7 @@ public class Hero extends Actor
     {
        move();
        shoot();
+      
     }    
     
      public void move()
@@ -51,8 +50,8 @@ public class Hero extends Actor
 
         if(Greenfoot.isKeyDown("space"))
           {
-              this.currentWeapon.shoot();
-
+              getWorld().addObject((Actor)this.currentWeapon, 0, 0);
+              this.currentWeapon.shoot(getX(),getY());
           }
     }
     

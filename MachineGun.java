@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MachineGun extends AbstractWeapon
 {
+    
     /**
      * Act - do whatever the MachineGun wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -15,5 +16,10 @@ public class MachineGun extends AbstractWeapon
     public void act() 
     {
         // Add your action code here.
-    }    
+    } 
+    //AbstractWeapon(double pFiringRate, Ammo pAmmo, int pSpeed) {
+    public MachineGun() {
+      super (40, new MagicBullet(), 10);
+    }
+    
 }

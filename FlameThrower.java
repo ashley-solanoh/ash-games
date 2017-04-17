@@ -15,5 +15,8 @@ public class FlameThrower extends AbstractWeapon
     public void act() 
     {
         // Add your action code here.
-    }    
+    }   
+    public FlameThrower()  {
+        super (1250, new FireBall(), 15);
+    }
 }

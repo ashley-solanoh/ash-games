@@ -14,6 +14,6 @@ public class MagicBullet extends AbstractBullets
     }
     
     public MagicBullet() {
-      Super (10);
+      super (10);
     }
 }
