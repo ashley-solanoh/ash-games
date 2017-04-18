@@ -19,6 +19,7 @@ public abstract class AbstractWeapon extends Actor implements Weapon
         this.firingRate = pFiringRate;
         this.ammo = pAmmo;
         this.ammoSpeed = pSpeed;
+
     }
     
     public void shoot(int pX, int pY) {
@@ -33,7 +34,9 @@ public abstract class AbstractWeapon extends Actor implements Weapon
             
             getWorld().addObject(ammoActor, pX, pY);
             this.lastShotTime = System.currentTimeMillis();
-            Greenfoot.playSound("next-level.wav");
+            GreenfootSound music = new GreenfootSound("Fireball.wav");
+            music.setVolume(90);
+            music.play();
             } catch (Exception e) {
             }
             

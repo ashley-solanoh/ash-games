@@ -10,10 +10,12 @@ public class AbstractBullets extends Actor implements Ammo
 {
     protected int speed;
     protected int damage; 
+    protected boolean active = true;
    
     public void act()  {
       move();
       exitWorld();
+      collision();
     }
     
     public int getDamage(){
@@ -30,8 +32,18 @@ public class AbstractBullets extends Actor implements Ammo
     }
     
     public void exitWorld()  {
-       if (getX() >= 995) {
+        
+        if (this.active && getX() >= 995) {
             getWorld().removeObject(this);
-        }
+            this.active = false;
+       }
+    }
+
+    public void collision(){
+       
+       if(this.active ) {
+         getWorld().removeObject(this);
+         this.active = false;
+       }
     }
 }

@@ -9,22 +9,24 @@ import java.util.Random;
  */
 public class Game extends Actor
 {
-    private int worldEdge = 595;
     private AbstractHero currentHero;
     private boolean gameInProgress = false;
     private double lastSpawnTime = System.currentTimeMillis();
     private double spawnRate = 450;//in milliseconds
+    private int score;
     
     private Random randomGenerator;
     private Random randomYGenerator;
     
     public void updateScore() {
      if (this.gameInProgress) {
-      GreenfootImage img = new GreenfootImage (100, 20);
-        //img.drawString ("Life: " ,2,20);
-       img.drawString ("Life: " + this.currentHero.getHealth(),2,20);
+      GreenfootImage img = new GreenfootImage (200, 20);
+       img.drawString ("Life: " + this.currentHero.getHealth() + "      Score: " + this.score ,2,20);
        setImage(img);
      }
+    }
+    public void increaseScore(int points) {
+        this.score = this.score + points;
     }
     
     /**
@@ -39,7 +41,6 @@ public class Game extends Actor
        }  
     
     private void start() {
- 
         if("s".equals(Greenfoot.getKey())) 
         {
           spawnHero();
@@ -47,13 +48,13 @@ public class Game extends Actor
           this.gameInProgress = true;
           this.randomGenerator = new Random();
           this.randomYGenerator = new Random();
+          GreenfootSound music = new GreenfootSound("Bizet.wav");
+          music.setVolume(80);
+          music.play();
+          this.score = 0;
         }
+        
     }
-    
-        public int getWorldEdge()
-    {
-        return this.worldEdge;
-    }    
     
     private void spawnHero()
     {
@@ -80,6 +81,8 @@ public class Game extends Actor
         }
       }
     } 
+    
+   
     
     
     

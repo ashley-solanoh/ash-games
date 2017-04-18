@@ -12,5 +12,6 @@ public class Enemy extends AbstractEnemies
       health = 1;
       speed = 4;
       damage = 2;
+      points = 2;
     }
 }

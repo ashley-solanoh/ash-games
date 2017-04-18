@@ -11,9 +11,12 @@ public class AbstractEnemies extends Actor
     protected int health;
     protected int speed;
     protected int damage;
-    
+    protected boolean active;
+    protected int points;
 
-    
+    public AbstractEnemies() {
+        this.active = true;
+    }
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -21,6 +24,8 @@ public class AbstractEnemies extends Actor
     public void act() 
     {
        move();
+       collide();
+       exitWorld();
     }   
     
     public int getDamage(){
@@ -30,20 +35,16 @@ public class AbstractEnemies extends Actor
     private void move()
     {
         move(-speed);
-        exitWorld();
+    
     }
     
     private void exitWorld()
     {
-       Actor xx;
-       xx = getOneObjectAtOffset(0,0, MagicBullet.class);
-       if (getX()<=1) {
-            getWorld().removeObject(this);
+       if ( this.active && getX()<=1) {
+                this.active = false;
+               getWorld().removeObject(this);
+   
         }   
-       if (xx != null)
-        {
-            health = health -   1;    
-        }
     }
     
      public void collide()
@@ -53,16 +54,22 @@ public class AbstractEnemies extends Actor
         if (actor != null)
         {
             AbstractBullets bullets = (AbstractBullets) actor; 
-            this.health = this.health -   bullets.getDamage();    
+            this.health = this.health - bullets.getDamage();    
             die();
+            bullets.collision();
         }
     }
     
      public void die() {
-        if (health < 0) {
-           World world;
-           world = getWorld();
-           world.removeObject(this);
+        
+        java.util.List gameList = getObjects(Game.class);
+        Game game = (Game)gameList[1];
+        if (this.active &&this.health < 0 ) {
+              this.active = false;
+              World world;
+              world = getWorld();
+              world.removeObject(this);
+              game.increaseScore(this.points);
         }
         
     }
