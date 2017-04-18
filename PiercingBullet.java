@@ -16,5 +16,6 @@ public class PiercingBullet extends AbstractBullets
     
     public PiercingBullet() {
       super (15);
+      damage = 3;
     }
 }

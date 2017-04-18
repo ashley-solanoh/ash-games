@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class FireBall extends AbstractBullets
 {
-     
+    
     public void act()  {
       move();
       exitWorld();
@@ -16,5 +16,6 @@ public class FireBall extends AbstractBullets
     
     public FireBall() {
       super (20);
+      damage = 2;
     }
 }

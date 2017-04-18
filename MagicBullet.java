@@ -16,5 +16,6 @@ public class MagicBullet extends AbstractBullets
     
     public MagicBullet() {
       super (10);
+      damage = 2;
     }
 }

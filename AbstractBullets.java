@@ -8,12 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class AbstractBullets extends Actor implements Ammo
 {
-    private int speed;
-     
+    protected int speed;
+    protected int damage; 
+   
     public void act()  {
       move();
       exitWorld();
     }
+    
+    public int getDamage(){
+       return this.damage;
+    }
+
     
     public AbstractBullets(int pSpeed) {
         speed = pSpeed;

@@ -45,4 +45,25 @@ public class AbstractEnemies extends Actor
             health = health -   1;    
         }
     }
+    
+     public void collide()
+    {
+        Actor actor;
+        actor = getOneObjectAtOffset(0,0, AbstractBullets.class);
+        if (actor != null)
+        {
+            AbstractBullets bullets = (AbstractBullets) actor; 
+            this.health = this.health -   bullets.getDamage();    
+            die();
+        }
+    }
+    
+     public void die() {
+        if (health < 0) {
+           World world;
+           world = getWorld();
+           world.removeObject(this);
+        }
+        
+    }
 }

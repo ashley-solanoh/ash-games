@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class HomingEnemy extends AbstractEnemies
 {
     public HomingEnemy (){
-      health = 3;
+      health = 2;
       speed = 7;
       damage = 10;
       

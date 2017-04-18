@@ -16,5 +16,6 @@ public class GuidedMissile extends AbstractBullets
     
     public GuidedMissile() {
       super (25);
+      damage = 2;
     }
 }
