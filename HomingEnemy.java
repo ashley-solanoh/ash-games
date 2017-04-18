@@ -10,8 +10,8 @@ public class HomingEnemy extends AbstractEnemies
 {
     public HomingEnemy (){
       health = 3;
-      speed = 7;
-      damage = 10;
+      speed = 5;
+      damage = 5;
       points = 5;
     }
 }

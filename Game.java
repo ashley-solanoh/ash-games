@@ -14,15 +14,17 @@ public class Game extends Actor
     private double lastSpawnTime = System.currentTimeMillis();
     private double spawnRate = 450;//in milliseconds
     private int score;
-    
+    private GreenfootSound music = new GreenfootSound("Bizet.wav");
+
+    private GreenfootImage img;
     private Random randomGenerator;
     private Random randomYGenerator;
     
     public void updateScore() {
      if (this.gameInProgress) {
-      GreenfootImage img = new GreenfootImage (200, 20);
-       img.drawString ("Life: " + this.currentHero.getHealth() + "      Score: " + this.score ,2,20);
-       setImage(img);
+       this.img = new GreenfootImage (200, 20);
+       this.img.drawString ("Life: " + this.currentHero.getHealth() + "      Score: " + this.score ,2,20);
+       setImage(this.img);
      }
     }
     public void increaseScore(int points) {
@@ -41,18 +43,29 @@ public class Game extends Actor
        }  
     
     private void start() {
-        if("s".equals(Greenfoot.getKey())) 
+        if("s".equals(Greenfoot.getKey()) && !this.gameInProgress) 
         {
           spawnHero();
           spawnEnemies();
           this.gameInProgress = true;
           this.randomGenerator = new Random();
           this.randomYGenerator = new Random();
-          GreenfootSound music = new GreenfootSound("Bizet.wav");
           music.setVolume(80);
           music.play();
           this.score = 0;
+          getWorld().setBackground("background0172.jpg");
         }
+    }
+    
+    public void stop() {
+        this.gameInProgress = false;
+        this.music.stop();
+        getWorld().setBackground("desert.png");
+        this.img = new GreenfootImage (1000,600);
+        
+        this.img.drawString ("GAME OVER! ",500,300);
+        this.img.drawString ("Try again! ",500,320);
+        setImage(this.img);
         
     }
     
@@ -68,10 +81,10 @@ public class Game extends Actor
  
       if ((this.gameInProgress) && (timeElapsed >= this.spawnRate)) {
           
-      int randomEnemyType = 1 + this.randomGenerator.nextInt(100 - 1 + 1);
-      int randomY = 10 + this.randomGenerator.nextInt(590 - 10 + 1);
+       int randomEnemyType = 1 + this.randomGenerator.nextInt(100 - 1 + 1);
+       int randomY = 10 + this.randomGenerator.nextInt(590 - 10 + 1);
       
-          if (randomEnemyType > 20) {
+          if (randomEnemyType > 10) {
            getWorld().addObject(new Enemy(), 1000, randomY);
            this.lastSpawnTime = System.currentTimeMillis();
         }
@@ -80,10 +93,5 @@ public class Game extends Actor
            this.lastSpawnTime = System.currentTimeMillis();
         }
       }
-    } 
-    
-   
-    
-    
-    
+    }     
 }

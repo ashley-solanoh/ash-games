@@ -13,5 +13,7 @@ public class Zoom extends AbstractHero
       this.health = 15;
       this.speed = 10;
       this.currentWeapon = new MachineGun();
+      heroSpawn.setVolume(100);
+      heroSpawn.play();
     }
 }

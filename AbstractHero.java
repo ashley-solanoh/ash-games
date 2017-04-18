@@ -11,6 +11,8 @@ public abstract class AbstractHero extends Actor
     protected int health;
     protected int speed;
     protected Weapon currentWeapon;
+    protected GreenfootSound heroSpawn = new GreenfootSound("Hero-ok.wav");
+    protected GreenfootSound heroDeath = new GreenfootSound("Hero-death.wav");
 
     public void act() {
         move();
@@ -55,12 +57,11 @@ public abstract class AbstractHero extends Actor
      public void collide()
     {
         Actor actor;
-        actor = getOneObjectAtOffset(0,0, AbstractEnemies.class);
+        actor = getOneObjectAtOffset(10,10, AbstractEnemies.class);
         if (actor != null)
         {
             AbstractEnemies enemy = (AbstractEnemies) actor; 
-            this.health = this.health -   enemy.getDamage();    
-            //getWorld().getObject((Actor));
+            this.health = this.health - enemy.getDamage();    
             getWorld().removeObject(enemy);
             die();
         }
@@ -68,9 +69,12 @@ public abstract class AbstractHero extends Actor
     
      public void die() {
         if (health < 0) {
-           World world;
-           world = getWorld();
-           world.removeObject(this);
+           java.util.List gameList = getWorld().getObjects(Game.class);
+           Game game = (Game)gameList.get(0);
+           heroDeath.setVolume(100);
+           heroDeath.play();
+           game.stop();
+           getWorld().removeObject(this);
         }
         
     }

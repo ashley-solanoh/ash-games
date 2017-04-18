@@ -39,9 +39,7 @@ public abstract class AbstractWeapon extends Actor implements Weapon
             music.play();
             } catch (Exception e) {
             }
-            
         }
         getImage().setTransparency(0);
     }
-    
 }

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class AbstractEnemies extends Actor
+public abstract class AbstractEnemies extends Actor
 {
     protected int health;
     protected int speed;
@@ -50,7 +50,7 @@ public class AbstractEnemies extends Actor
      public void collide()
     {
         Actor actor;
-        actor = getOneObjectAtOffset(0,0, AbstractBullets.class);
+        actor = getOneObjectAtOffset(4,4, AbstractBullets.class);
         if (actor != null)
         {
             AbstractBullets bullets = (AbstractBullets) actor; 
@@ -61,10 +61,9 @@ public class AbstractEnemies extends Actor
     }
     
      public void die() {
-        
-        java.util.List gameList = getObjects(Game.class);
-        Game game = (Game)gameList[1];
-        if (this.active &&this.health < 0 ) {
+        java.util.List gameList = getWorld().getObjects(Game.class);
+        Game game = (Game)gameList.get(0);
+        if (this.active && this.health < 0 ) {
               this.active = false;
               World world;
               world = getWorld();

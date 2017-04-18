@@ -21,5 +21,4 @@ public interface Champion
     
     public void runaway();
     
- 
 }

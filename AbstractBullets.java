@@ -40,7 +40,6 @@ public class AbstractBullets extends Actor implements Ammo
     }
 
     public void collision(){
-       
        if(this.active ) {
          getWorld().removeObject(this);
          this.active = false;
